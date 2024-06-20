@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (empty($_POST["name"])) {
     die("Name is required");
 }
@@ -43,6 +43,11 @@ $stmt->bind_param("sss",
                   $password_hash);
                   
 if ($stmt->execute()) {
+     // Get the ID of the newly inserted user
+     $user_id = $stmt->insert_id;
+     // Set session variable
+     $_SESSION['user_id'] = $user_id;
+
 
     header("Location: signup-success.html");
     exit;

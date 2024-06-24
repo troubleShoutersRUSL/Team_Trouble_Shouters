@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$mysqli = include "../database.php";
+$mysqli = include "database.php";
 include "header.php";
 if(!isset($_SESSION["user_name"]))
 {

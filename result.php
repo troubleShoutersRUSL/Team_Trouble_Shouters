@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$mysqli = include "../database.php";
+$mysqli = include "database.php";
 $date = date("Y-m-d H:i:s");
 $_SESSION["end_time"] = date("Y-m-d H:i:s", strtotime($date . "+ $_SESSION[quiz_time] minutes"));
 include "header.php";

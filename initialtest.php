@@ -30,8 +30,7 @@ include "header.php";
 
 $res = $mysqli->query("SELECT * FROM quiz_category");
 while ($row = mysqli_fetch_array($res)) {
-    if ($row["id"] == "6") {
-
+    if (in_array($row["id"], ["6", "7", "8"])) {
         ?>
 
         <input type="button" class="btn btn-success form-control" value="<?php echo $row["category"]; ?>" style="margin-top:10px; background-color:blue; color:white" onclick="set_exam_type_session(this.value);">

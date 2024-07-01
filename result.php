@@ -42,6 +42,19 @@ include "header.php";
         echo "<br>";
         echo "Wrong Answer=" . $wrong;
         echo "</center>";
+        echo "<br><br>";
+        echo "<center>";
+
+        
+        // Add the form with a submit button
+        echo '<form action="select_quiz.php" method="post">';
+        echo '<input type="submit" class="btn btn-primary" value="Next">';
+        echo '</form>';
+
+        echo "</center>";
+    
+
+
         ?>
     </div>
 </div>
@@ -55,7 +68,11 @@ if (isset($_SESSION["quiz_start"])) {
     <script type="text/javascript">
         window.location.href = window.location.href;
     </script>
+
     <?php
 }
+
+
+
 include "footer.php";
 ?>

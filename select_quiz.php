@@ -30,7 +30,7 @@ include "header.php";
 
 $res = $mysqli->query("SELECT * FROM quiz_category");
 while ($row = mysqli_fetch_array($res)) {
-    if ($row["id"] == "6") {
+    if (in_array($row["id"], ["6", "7", "8"])) {
         continue; 
     }
     ?>
@@ -66,7 +66,7 @@ include "footer.php";
                 xmlhttp.onreadystatechange=function(){
                     if (xmlhttp.readyState==4 && xmlhttp.status==200)
                     {
-                        window.location="dashboard.php";
+                        window.location="dashboard1.php";
                     }
                 };
                 xmlhttp.open("GET", "forajax/set_quiz_type_session.php?quiz_category="+ quiz_category, true);

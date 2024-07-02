@@ -24,12 +24,11 @@ if(!isset($_SESSION["admin"]))
 }
 
 $id =  $_GET["id"];
-$res=$mysqli->query("SELECT * FROM quiz_category where id=$id");
-while($row=mysqli_fetch_array($res))
-{
-    $quiz_category=$row["category"];
-    $quiz_time=$row["quiz_time_in_minutes"];
-
+$res = $mysqli->query("SELECT * FROM quiz_category WHERE id=$id");
+while($row = mysqli_fetch_array($res)) {
+    $quiz_category = $row["category"];
+    $quiz_time = $row["quiz_time_in_minutes"];
+    $quiz_resource = $row["resource"];
 }
 ?>
 
@@ -63,13 +62,15 @@ while($row=mysqli_fetch_array($res))
                                             <input type="text" placeholder="Quiz Time in Minutes" class="form-control" name="quiztime" value="<?php echo $quiz_time; ?>">
                                         </div>
                                         <div class="form-group">
+                                            <label for="quizresource" class="form-control-label">Quiz Resource</label>
+                                            <input type="text" placeholder="Resource for before attempt Quiz" class="form-control" value="<?php echo $quiz_resource; ?>" name="quizresource">
+                                        </div>
+                                        <div class="form-group">
                                             <input type="submit" name="submit1" value="Update Quiz" class="btn btn-success">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            
                         </div>
                     </form>
                 </div>
@@ -80,11 +81,12 @@ while($row=mysqli_fetch_array($res))
 
 <?php
 if (isset($_POST["submit1"])) {
-    if (!empty($_POST['quizname']) && !empty($_POST['quiztime'])) {
+    if (!empty($_POST['quizname']) && !empty($_POST['quiztime']) && !empty($_POST['quizresource'])) {
         $quizname = $mysqli->real_escape_string($_POST['quizname']);
         $quiztime = $mysqli->real_escape_string($_POST['quiztime']);
+        $quizresource = $mysqli->real_escape_string($_POST['quizresource']);
 
-        $sql = "UPDATE quiz_category SET category = '$quizname', quiz_time_in_minutes = '$quiztime' WHERE id = $id";
+        $sql = "UPDATE quiz_category SET category = '$quizname', quiz_time_in_minutes = '$quiztime', resource = '$quizresource' WHERE id = $id";
 
         if ($mysqli->query($sql) === TRUE) {
             // Redirect to quiz_category.php
@@ -99,6 +101,5 @@ if (isset($_POST["submit1"])) {
     }
 }
 ?>
-
 
 <?php include "footer.php"; ?>

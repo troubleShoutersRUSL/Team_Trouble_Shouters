@@ -56,6 +56,10 @@ if(!isset($_SESSION["admin"]))
                                             <input type="text" placeholder="Quiz Time in Minutes" class="form-control" name="quiztime">
                                         </div>
                                         <div class="form-group">
+                                            <label for="quizresource" class="form-control-label">Quiz Resource</label>
+                                            <input type="text" placeholder="Resource for before attempt Quiz" class="form-control" name="quizresource">
+                                        </div>
+                                        <div class="form-group">
                                             <input type="submit" name="submit1" value="Add Quiz" class="btn btn-success">
                                         </div>
                                     </div>
@@ -122,8 +126,9 @@ if (isset($_POST["submit1"])) {
     if (!empty($_POST['quizname']) && !empty($_POST['quiztime'])) {
         $quizname = $mysqli->real_escape_string($_POST['quizname']);
         $quiztime = $mysqli->real_escape_string($_POST['quiztime']);
+        $quizresource = $mysqli->real_escape_string($_POST['quizresource']);
 
-        $sql = "INSERT INTO quiz_category (category, quiz_time_in_minutes) VALUES ('$quizname', '$quiztime')";
+        $sql = "INSERT INTO quiz_category (category, quiz_time_in_minutes, resource) VALUES ('$quizname', '$quiztime', '$quizresource')";
 
         if ($mysqli->query($sql) === TRUE) {
             echo "<script>alert('Quiz added successfully!!!');

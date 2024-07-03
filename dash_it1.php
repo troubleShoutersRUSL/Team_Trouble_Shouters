@@ -81,7 +81,7 @@ if (!isset($_SESSION["user_name"])) {
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 if (xmlhttp.responseText == "over") {
-                    window.location = "result.php";
+                    window.location = "result_it1.php";
                 } else {
                     document.getElementById("load_questions").innerHTML = xmlhttp.responseText;
                     load_total_que();

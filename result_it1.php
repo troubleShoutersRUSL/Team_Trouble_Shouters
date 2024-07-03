@@ -48,7 +48,7 @@ include "header.php";
 
         
         // Add the form with a submit button
-        echo '<form action="initialtest.php" method="post">';
+        echo '<form action="initialtest2.php" method="post">';
         echo '<input type="submit" class="btn btn-primary" value="Next">';
         echo '</form>';
 

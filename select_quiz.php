@@ -66,7 +66,7 @@ include "footer.php";
                 xmlhttp.onreadystatechange=function(){
                     if (xmlhttp.readyState==4 && xmlhttp.status==200)
                     {
-                        window.location="dashboard1.php";
+                        window.location="dashboard.php";
                     }
                 };
                 xmlhttp.open("GET", "forajax/set_quiz_type_session.php?quiz_category="+ quiz_category, true);

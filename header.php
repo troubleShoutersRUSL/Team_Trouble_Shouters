@@ -32,7 +32,7 @@
                                             <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
 													<i class="educate-icon educate-nav"></i>
 												</button>
-                                        </div>s
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
                                         <div class="header-top-menu tabl-d-n">

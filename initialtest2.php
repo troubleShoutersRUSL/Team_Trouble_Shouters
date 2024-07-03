@@ -25,7 +25,7 @@ include "header.php";
 
 $res = $mysqli->query("SELECT * FROM quiz_category");
 while ($row = mysqli_fetch_array($res)) {
-    if (in_array($row["id"], ["6"])) {
+    if (in_array($row["id"], ["7"])) {
         ?>
         <input type="button" class="btn btn-success form-control" value="<?php echo $row["category"]; ?>" style="margin-top:10px; background-color:blue; color:white" onclick="set_exam_type_session(this.value);">
 
@@ -52,7 +52,7 @@ include "footer.php";
                 xmlhttp.onreadystatechange=function(){
                     if (xmlhttp.readyState==4 && xmlhttp.status==200)
                     {
-                        window.location="dash_it1.php";
+                        window.location="dash_it2.php";
                     }
                 };
                 xmlhttp.open("GET", "forajax/set_quiz_type_session.php?quiz_category="+ quiz_category, true);

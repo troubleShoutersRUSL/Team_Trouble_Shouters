@@ -58,7 +58,7 @@ if (!isset($_SESSION["user_name"])) {
                 createNavigationButtons(xmlhttp.responseText);
             }
         };
-        xmlhttp.open("GET", "forajax/load_total_que.php", true);
+        xmlhttp.open("GET", "forajax_it/load_total_que.php", true);
         xmlhttp.send(null);
     }
 
@@ -89,7 +89,7 @@ if (!isset($_SESSION["user_name"])) {
                 }
             }
         };
-        xmlhttp.open("GET", "forajax/load_question.php?questionno=" + questionno, true);
+        xmlhttp.open("GET", "forajax_it/load_question.php?questionno=" + questionno, true);
         xmlhttp.send(null);
     }
 
@@ -100,7 +100,7 @@ if (!isset($_SESSION["user_name"])) {
                 // Answer saved, do nothing here
             }
         };
-        xmlhttp.open("GET", "forajax/save_answer_in_session.php?questionno=" + questionno + "&value1=" + radiovalue, true);
+        xmlhttp.open("GET", "forajax_it/save_answer_in_session.php?questionno=" + questionno + "&value1=" + radiovalue, true);
         xmlhttp.send(null);
     }
 
@@ -139,7 +139,7 @@ if (!isset($_SESSION["user_name"])) {
                 }
             }
         };
-        xmlhttp.open("GET", "forajax/load_saved_answer.php?questionno=" + questionno, true);
+        xmlhttp.open("GET", "forajax_it/load_saved_answer.php?questionno=" + questionno, true);
         xmlhttp.send(null);
     }
 

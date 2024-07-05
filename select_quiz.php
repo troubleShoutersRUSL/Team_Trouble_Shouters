@@ -18,7 +18,7 @@ if(!isset($_SESSION["user_id"]) )
 
 <?php 
 
-$mysqli = include "../database.php";
+$mysqli = include "database.php";
 include "header.php";
 ?>
 
@@ -65,6 +65,8 @@ include "footer.php";
                     if (xmlhttp.readyState==4 && xmlhttp.status==200)
                     {
                         window.location="dashboard.php";
+                       
+
                     }
                 };
                 xmlhttp.open("GET", "forajax/set_quiz_type_session.php?quiz_category="+ quiz_category, true);

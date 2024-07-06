@@ -1,19 +1,14 @@
-
 <?php 
 session_start();
 
-//include "header.php";
+include "header.php";
 if (!isset($_SESSION["user_name"])) {
-    /*?>
+    ?>
         <script type="text/javascript">
             window.location.href = "login.php";
         </script>
-    <?<php>*/
-    echo "<script>localStorage.clear();</script>";
-    echo "<script type='text/javascript'>windows.location.href = 'login.php';</script>";
-    exit;
+    <?php
 }
-include "header.php";
 ?>
 
 <div class="row">
@@ -38,10 +33,6 @@ include "header.php";
                     <div class="col-lg-12 text-center">
                         <input type="button" class="btn btn-warning" value="Previous" onclick="load_previous();">&nbsp;
                         <input type="button" class="btn btn-success" value="Next" onclick="load_next();">&nbsp;
-                        <input type="button" id="flag" class="btn btn-danger" value="Flag">&nbsp;
-                        <input type="button" id="show-flagged" class="btn btn-show_flag" value="show flag" style="color: darksalmon">&nbsp;
-                        
-
                     </div>
                 </div>
             </div>
@@ -56,28 +47,20 @@ include "header.php";
 </div>
 
 <script type="text/javascript">
-   var questionno = 1;
+    var questionno = 1;
     load_questions(questionno);
-    var totalQuestions = 0;
-    var flaggedQuestions = JSON.parse(localStorage.getItem('flaggedQuestions')) || [];
 
     function load_total_que() {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                totalQuestions =parseInt(xmlhttp.responseText, 10);
                 document.getElementById("total_que").innerHTML = xmlhttp.responseText;
                 createNavigationButtons(xmlhttp.responseText);
-                cleanupInvalidFlaggedQuestions();
-            
             }
         };
-        xmlhttp.open("GET", "forajax/load_total_que.php", true);
+        xmlhttp.open("GET", "forajax_it/load_total_que.php", true);
         xmlhttp.send(null);
     }
-
-    //var questionno = 1;
-    //load_questions(questionno);
 
     function createNavigationButtons(totalQuestions) {
         var navigationButtonsDiv = document.getElementById("navigation_buttons");
@@ -98,16 +81,15 @@ include "header.php";
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 if (xmlhttp.responseText == "over") {
-                    window.location = "result.php";
+                    window.location = "result_it2.php";
                 } else {
                     document.getElementById("load_questions").innerHTML = xmlhttp.responseText;
                     load_total_que();
                     load_answer(questionno);  // Load the saved answer for the current question
-                    updateFlagButton();
                 }
             }
         };
-        xmlhttp.open("GET", "forajax/load_question.php?questionno=" + questionno, true);
+        xmlhttp.open("GET", "forajax_it/load_question.php?questionno=" + questionno, true);
         xmlhttp.send(null);
     }
 
@@ -118,7 +100,7 @@ include "header.php";
                 // Answer saved, do nothing here
             }
         };
-        xmlhttp.open("GET", "forajax/save_answer_in_session.php?questionno=" + questionno + "&value1=" + radiovalue, true);
+        xmlhttp.open("GET", "forajax_it/save_answer_in_session.php?questionno=" + questionno + "&value1=" + radiovalue, true);
         xmlhttp.send(null);
     }
 
@@ -157,66 +139,13 @@ include "header.php";
                 }
             }
         };
-        xmlhttp.open("GET", "forajax/load_saved_answer.php?questionno=" + questionno, true);
+        xmlhttp.open("GET", "forajax_it/load_saved_answer.php?questionno=" + questionno, true);
         xmlhttp.send(null);
     }
 
     load_total_que();
-
-//var flaggedQuestions = JSON.parse(localStorage.getItem('flaggedQuestions')) || [];
-
-function toggleFlag() {
-    const questionId = parseInt(document.getElementById("current_que").innerHTML, 10);
-    if (flaggedQuestions.includes(questionId)) {
-        flaggedQuestions = flaggedQuestions.filter(id => id !== questionId);
-    } else {
-        if (questionId > 0 && questionId <= totalQuestions) {
-            flaggedQuestions.push(questionId);
-        }
-    }
-    localStorage.setItem('flaggedQuestions', JSON.stringify(flaggedQuestions));
-    updateFlagButton();
-}
-
-function updateFlagButton() {
-    const questionId = parseInt(document.getElementById("current_que").innerHTML, 10);
-    const flagButton = document.getElementById("flag");
-    if (flaggedQuestions.includes(questionId)) {
-        flagButton.classList.add('flagged');
-        flagButton.value = 'Unflag';
-        flagButton.innerHTML = '<i class="fas fa-flag"></i> Unflag';
-    } else {
-        flagButton.classList.remove('flagged');
-        flagButton.value = 'Flag';
-        flagButton.innerHTML = '<i class="fas fa-flag"></i> Flag';
-    }
-}
-
-function cleanupInvalidFlaggedQuestions() {
-    flaggedQuestions = flaggedQuestions.filter(id => id > 0 && id <= totalQuestions);
-    localStorage.setItem('flaggedQuestions', JSON.stringify(flaggedQuestions));
-}
-
-document.addEventListener("DOMContentLoaded",function(){
-document.getElementById("flag").addEventListener("click", toggleFlag);
-document.getElementById("show-flagged").addEventListener("click", function() {
-    cleanupInvalidFlaggedQuestions();
-    const flaggedQuestionIds = JSON.parse(localStorage.getItem('flaggedQuestions')) || [];
-    alert('Flagged Questions: ' + flaggedQuestionIds.join(', '));
-});
-
-localStorage.setItem('flaggedQuestions', JSON.stringify([]));
-flaggedQuestions = [];
-load_questions(questionno);
-load_total_que();
-});
-
-//updateFlagButton(); // Initial call to set the correct state on page load
 </script>
-
-
 
 <?php
 include "footer.php";
 ?>
-

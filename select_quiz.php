@@ -21,13 +21,18 @@ include "header.php";
     <div class="col-lg-6 col-lg-push-3" style="min-height: 500px; background-color: White;">
         <?php
         $res = $mysqli->query("SELECT * FROM quiz_category");
+
         while ($row = mysqli_fetch_array($res)) {
+            if (in_array($row["id"], ["6", "7", "8"])) {
+                continue;
+            }
+
             $category = $row["category"];
             $time = $row["quiz_time_in_minutes"];
             $resource = $row["resource"];
-            ?>
+        ?>
             <input type="button" class="btn btn-success form-control quiz-btn" value="<?php echo $category; ?>" style="margin-top:10px; background-color:blue; color:white" data-category="<?php echo $category; ?>" data-time="<?php echo $time; ?>" data-resource="<?php echo $resource; ?>">
-            <?php
+        <?php
         }
         ?>
     </div>
@@ -55,7 +60,6 @@ include "header.php";
         </div>
     </div>
 </div>
-
 
 <?php include "footer.php"; ?>
 

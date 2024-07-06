@@ -27,6 +27,26 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
+    <script>
+document.querySelector('form').addEventListener('submit', function (e) {
+    var resourceInput = document.querySelector('input[name="quizresource"]');
+    var urls = resourceInput.value.split(',');
+
+    // Regular expression to validate URL format
+    var urlPattern = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?$/;
+
+    // Check each URL in the input field
+    var allValid = urls.every(function(url) {
+        return urlPattern.test(url.trim());
+    });
+
+    if (!allValid) {
+        e.preventDefault();
+        alert('Please enter valid URLs for all resources.');
+    }
+});
+</script>
+
 
 
 </head>

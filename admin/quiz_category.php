@@ -57,8 +57,9 @@ if(!isset($_SESSION["admin"]))
                                         </div>
                                         <div class="form-group">
                                             <label for="quizresource" class="form-control-label">Quiz Resource</label>
-                                            <input type="text" placeholder="Resource for before attempt Quiz" class="form-control" name="quizresource">
+                                             <input type="url" placeholder="Resource for before attempt Quiz" class="form-control" name="quizresource" required>
                                         </div>
+
                                         <div class="form-group">
                                             <input type="submit" name="submit1" value="Add Quiz" class="btn btn-success">
                                         </div>

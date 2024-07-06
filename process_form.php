@@ -1,6 +1,6 @@
 <?php session_start();
 require 'database.php';
-var_dump($_SESSION);die();
+//var_dump($_SESSION);die();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $user_id = $_SESSION['user_id'];  // Assuming user_id is stored in the session after login
   $name = $_POST['name'];
@@ -17,10 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    // Insert data into the database
    $sql = <<<SQL
-   INSERT INTO user_profiles (user_id, name, university, faculty, age, mobile_number, gpa, activities, home_number, street_address, city, district_name)
+   INSERT INTO user_profile (user_id, name, university, faculty, age, mobile_number, gpa, activities, home_number, street_address, city, district_name)
    VALUES ($user_id, '$name', '$university', '$faculty', $age, '$mobileNumber', $gpa, '$activities', '$homeNumber', '$streetAddress', '$city', '$districtName')
    SQL;
-//    var_dump($sql);die();
+//var_dump($sql);die();
 if ($mysqli->query($sql) === TRUE) {
 echo "Profile successfully created.";
 header("Location: login.php");

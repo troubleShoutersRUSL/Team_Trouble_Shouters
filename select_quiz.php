@@ -14,7 +14,7 @@ if (!isset($_SESSION["user_id"])) {
 
 <?php 
 $mysqli = include "database.php";
-include "header.php";
+include "headerwithouttimer.php";
 ?>
 
 <div class="row" style="">

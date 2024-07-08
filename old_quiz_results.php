@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $mysqli = include "database.php";
-include "header.php";
+include "headerwithouttimer.php";
 if(!isset($_SESSION["user_name"]))
 {
     ?>

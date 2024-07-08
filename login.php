@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <a href="#"><ion-icon name="menu-outline"></ion-icon></a>
         </div>
         <ul class="menu">
-            <li><a href="#">About</a></li>
+            <li><a href="aboutUs.html">About</a></li>
             <li><a href="#">Contact us</a></li>
             <li><a href="signup.html"><button class="signup-btn">SignUp</button></a></li>
         </ul>     

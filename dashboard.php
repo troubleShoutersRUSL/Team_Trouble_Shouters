@@ -17,7 +17,7 @@ include "header.php";
 ?>
 
 <div class="row">
-    <div class="col-lg-6 col-lg-push-3" style="min-height: 500px; background-color: White;">
+    <div class="col-lg-6 col-lg-push-3" style="min-height: 500px; background-color: white;">
         <br>
         <div class="row">
             <br>

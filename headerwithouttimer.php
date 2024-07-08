@@ -42,7 +42,7 @@
                                                 <li class="nav-item"><a href="select_quiz.php" class="nav-link">Select Quiz</a></li>
                                                 <li class="nav-item"><a href="old_quiz_results.php" class="nav-link">Last Results</a></li>
                                                 <li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>
-                                                <li class="nav-item"><a href="#" class="nav-link">Career Suggestion</a></li>
+                                                <li class="nav-item"><a href="Career.php" class="nav-link">Career Suggestion</a></li>
                                             </ul>
                                         </div>
                                     </div>

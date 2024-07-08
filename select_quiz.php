@@ -18,7 +18,7 @@ include "headerwithouttimer.php";
 ?>
 
 <div class="row" style="">
-    <div class="col-lg-6 col-lg-push-3" style="min-height: 500px; background-color: White;">
+    <div class="col-lg-6 col-lg-push-3" style="min-height: 600px; background-color: White;">
         <?php
         $res = $mysqli->query("SELECT * FROM quiz_category");
 

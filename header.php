@@ -46,7 +46,7 @@
                                                 </li>
                                                 <li class="nav-item"><a href="logout.php" class="nav-link">Logout</a>
                                                 </li>
-                                                <li class="nav-item"><a href="#" class="nav-link">Career Suggestion</a>
+                                                <li class="nav-item"><a href="Career.php" class="nav-link">Career Suggestion</a>
                                                 </li>
                                                
                                             </ul>
